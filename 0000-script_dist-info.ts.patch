@@ -1,0 +1,16 @@
+diff --git a/script/dist-info.ts b/script/dist-info.ts
+index e2ae688d55..5a82a5b60d 100644
+--- a/script/dist-info.ts
++++ b/script/dist-info.ts
+@@ -25,7 +25,7 @@ export function getExecutableName() {
+   if (process.platform === 'win32') {
+     return `${getWindowsIdentifierName()}${suffix}`
+   } else if (process.platform === 'linux') {
+-    return 'desktop'
++    return `desktop${suffix}`
+   } else {
+     return productName
+   }
+-- 
+2.48.1
+

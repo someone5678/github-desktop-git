@@ -1,0 +1,17 @@
+diff --git a/app/src/cli/main.ts b/app/src/cli/main.ts
+index 27f05bb5f7..e6c582013c 100644
+--- a/app/src/cli/main.ts
++++ b/app/src/cli/main.ts
+@@ -26,6 +26,9 @@ const run = (...args: Array<string>) => {
+       .on('error', cb)
+       .on('exit', code => (process.exitCode = code ?? process.exitCode))
+       .unref()
++  } else if (process.platform === 'linux') {
++    const binName = `desktop${__DEV__ ? '-dev' : ''}`
++    execFile(join(__dirname, `../../${binName}`), args, cb)
+   } else {
+     throw new Error('Unsupported platform')
+   }
+-- 
+2.48.1
+

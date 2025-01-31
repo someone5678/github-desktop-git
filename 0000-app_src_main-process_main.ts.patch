@@ -1,0 +1,59 @@
+diff --git a/app/src/main-process/main.ts b/app/src/main-process/main.ts
+index 9990a56044..fd5ee86618 100644
+--- a/app/src/main-process/main.ts
++++ b/app/src/main-process/main.ts
+@@ -103,16 +103,19 @@ function getExtraErrorContext(): Record<string, string> {
+ const protocolLauncherArg = '--protocol-launcher'
+ 
+ const possibleProtocols = new Set(['x-github-client'])
+-if (__DEV__) {
+-  possibleProtocols.add('x-github-desktop-dev-auth')
+-} else {
+-  possibleProtocols.add('x-github-desktop-auth')
+-}
++// On Linux, GitHub started passes x-github-desktop-dev-auth
++// even on production build.
++// Add all protocol to workaround.
++possibleProtocols.add('x-github-desktop-dev-auth')
++possibleProtocols.add('x-github-desktop-auth')
++
+ // Also support Desktop Classic's protocols.
+ if (__DARWIN__) {
+   possibleProtocols.add('github-mac')
+ } else if (__WIN32__) {
+   possibleProtocols.add('github-windows')
++} else if (__LINUX__) {
++  possibleProtocols.add('github-linux')
+ }
+ 
+ // On Windows, in order to get notifications properly working for dev builds,
+@@ -279,6 +282,26 @@ async function handleCommandLineArguments(argv: string[]) {
+     return
+   }
+ 
++  if (__LINUX__) {
++    const prefixes = Array.from(possibleProtocols, p => `${p}://`)
++    const matchingUrl = argv.find(arg => {
++      if (prefixes.some(p => arg.startsWith(p))) {
++        try {
++          new URL(arg)
++          return true
++        } catch (e) {
++          log.error(`Unable to parse argument as URL: ${arg}`)
++        }
++      }
++      return false
++    })
++
++    if (matchingUrl) {
++      handleAppURL(matchingUrl)
++      return
++    }
++  }
++
+   if (typeof args['cli-open'] === 'string') {
+     handleCLIAction({ kind: 'open-repository', path: args['cli-open'] })
+   } else if (typeof args['cli-clone'] === 'string') {
+-- 
+2.48.1
+

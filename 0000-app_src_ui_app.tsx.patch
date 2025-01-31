@@ -1,0 +1,30 @@
+diff --git a/app/src/ui/app.tsx b/app/src/ui/app.tsx
+index 5b24ddb834..9ac81c3b53 100644
+--- a/app/src/ui/app.tsx
++++ b/app/src/ui/app.tsx
+@@ -1299,8 +1299,8 @@ export class App extends React.Component<IAppProps, IAppState> {
+    * on Windows.
+    */
+   private renderAppMenuBar() {
+-    // We only render the app menu bar on Windows
+-    if (!__WIN32__) {
++    // We do not render the app menu bar on macOS
++    if (__DARWIN__) {
+       return null
+     }
+ 
+@@ -1361,12 +1361,12 @@ export class App extends React.Component<IAppProps, IAppState> {
+     // the title bar when the menu bar is active. On other platforms we
+     // never render the title bar while in full-screen mode.
+     if (inFullScreen) {
+-      if (!__WIN32__ || !menuBarActive) {
++      if (__DARWIN__ || !menuBarActive) {
+         return null
+       }
+     }
+ 
+-    const showAppIcon = __WIN32__ && !this.state.showWelcomeFlow
++    const showAppIcon = !__DARWIN__ && !this.state.showWelcomeFlow
+     const inWelcomeFlow = this.state.showWelcomeFlow
+     const inNoRepositoriesView = this.inNoRepositoriesViewState()
+ 

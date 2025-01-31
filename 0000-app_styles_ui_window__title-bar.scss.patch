@@ -1,0 +1,28 @@
+diff --git a/app/styles/ui/window/_title-bar.scss b/app/styles/ui/window/_title-bar.scss
+index 2662b3bb51..6dae12eab5 100644
+--- a/app/styles/ui/window/_title-bar.scss
++++ b/app/styles/ui/window/_title-bar.scss
+@@ -15,7 +15,7 @@
+     border-bottom: 1px solid #000;
+   }
+ 
+-  @include win32 {
++  @mixin custom-title-bar {
+     height: var(--win32-title-bar-height);
+     background: var(--win32-title-bar-background-color);
+     border-bottom: 1px solid #000;
+@@ -27,6 +27,14 @@
+     }
+   }
+ 
++  @include win32 {
++    @include custom-title-bar;
++  }
++
++  @include linux {
++    @include custom-title-bar;
++  }
++
+   .resize-handle {
+     position: absolute;
+     top: 0px;

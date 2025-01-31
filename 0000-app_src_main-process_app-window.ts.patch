@@ -1,0 +1,13 @@
+diff --git a/app/src/main-process/app-window.ts b/app/src/main-process/app-window.ts
+index 03a3d26243..5579bde63d 100644
+--- a/app/src/main-process/app-window.ts
++++ b/app/src/main-process/app-window.ts
+@@ -78,7 +78,7 @@ export class AppWindow {
+     } else if (__WIN32__) {
+       windowOptions.frame = false
+     } else if (__LINUX__) {
+-      windowOptions.icon = path.join(__dirname, 'static', 'icon-logo.png')
++      windowOptions.icon = path.join(__dirname, 'static', 'logos', '512x512.png')
+     }
+ 
+     this.window = new BrowserWindow(windowOptions)

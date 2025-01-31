@@ -1,0 +1,16 @@
+diff --git a/app/src/ui/window/window-controls.tsx b/app/src/ui/window/window-controls.tsx
+index a98aef3306..558d33f47d 100644
+--- a/app/src/ui/window/window-controls.tsx
++++ b/app/src/ui/window/window-controls.tsx
+@@ -114,11 +114,6 @@ export class WindowControls extends React.Component<{}, IWindowControlState> {
+   }
+ 
+   public render() {
+-    // We only know how to render fake Windows-y controls
+-    if (!__WIN32__) {
+-      return <span />
+-    }
+-
+     const min = this.renderButton('minimize', this.onMinimize, minimizePath)
+     const maximizeOrRestore =
+       this.state.windowState === 'maximized'

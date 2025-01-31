@@ -1,0 +1,15 @@
+diff --git a/app/src/ui/about/about.tsx b/app/src/ui/about/about.tsx
+index ae18a158b7..a6f290c6ea 100644
+--- a/app/src/ui/about/about.tsx
++++ b/app/src/ui/about/about.tsx
+@@ -257,6 +257,10 @@ export class About extends React.Component<IAboutProps, IAboutState> {
+       return
+     }
+ 
++    if (__LINUX__) {
++      return
++    }
++
+     return (
+       <div>
+         <p className="no-padding">Looking for the latest features?</p>
