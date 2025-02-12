@@ -3,9 +3,9 @@
 pkgname=github-desktop-git
 _pkgname="github-desktop"
 pkgver=3.4.17
-_suffix=beta1
-_gitname="release-$pkgver-$_suffix"
-pkgrel=1
+_suffix=-beta2
+_gitname="release-$pkgver$_suffix"
+pkgrel=2
 pkgdesc='GUI for managing Git and GitHub (unofficial Linux support patch applied official upstream)'
 arch=(x86_64)
 url='https://desktop.github.com'
@@ -36,7 +36,7 @@ source=("$pkgname::git+https://github.com/desktop/desktop.git#tag=$_gitname"
         'git+https://github.com/github/choosealicense.com.git'
         "$_pkgname.desktop"
         "github"
-        # Patches
+        # Patches from https://github.com/shiftkey/desktop
         '0000-app_src_cli_main.ts.patch'
         '0000-app_src_main-process_app-window.ts.patch'
         '0000-app_src_main-process_main.ts.patch'
@@ -54,7 +54,7 @@ sha256sums=('SKIP'
             'SKIP'
             '2f2b5425658106c080c17bf57af4541630157aa2e1133b3033bb6e24a95dd179'
             '6d59c9cf63f3aa86bec9ec6b225899cc84bf651e00d112a7d55026e35d9c7dcf'
-            # Patches
+            # Patches from https://github.com/shiftkey/desktop
             'd0d9d82c163b538185a449d5304271414b3ffdd897e00059f06854d4bc4b8e2e'
             '9bfe0224dc8f3ce0630303085bd538f5466a772d0b156a3af9bea98c552e1a33'
             '2e0dc550765b5e58a0e0f6efc3a025c638aba27b3185c91fb80c0aeaf86a6ba6'
