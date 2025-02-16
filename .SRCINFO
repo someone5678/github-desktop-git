@@ -1,7 +1,7 @@
 pkgbase = github-desktop-git
 	pkgdesc = GUI for managing Git and GitHub (unofficial Linux support patch applied official upstream)
 	pkgver = 3.4.17
-	pkgrel = 2
+	pkgrel = 3
 	url = https://desktop.github.com
 	arch = x86_64
 	license = MIT
@@ -24,7 +24,7 @@ pkgbase = github-desktop-git
 	optdepends = hub: CLI interface for GitHub
 	provides = github-desktop
 	conflicts = github-desktop
-	source = github-desktop-git::git+https://github.com/desktop/desktop.git#tag=release-3.4.17-beta2
+	source = github-desktop-git::git+https://github.com/desktop/desktop.git#tag=release-3.4.17-beta3
 	source = git+https://github.com/github/gemoji.git
 	source = git+https://github.com/github/gitignore.git
 	source = git+https://github.com/github/choosealicense.com.git

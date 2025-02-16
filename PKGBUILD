@@ -3,9 +3,9 @@
 pkgname=github-desktop-git
 _pkgname="github-desktop"
 pkgver=3.4.17
-_suffix=-beta2
+_suffix=-beta3
 _gitname="release-$pkgver$_suffix"
-pkgrel=2
+pkgrel=3
 pkgdesc='GUI for managing Git and GitHub (unofficial Linux support patch applied official upstream)'
 arch=(x86_64)
 url='https://desktop.github.com'
